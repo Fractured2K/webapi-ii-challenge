@@ -67,7 +67,9 @@ router.delete("/:id", async (req, res) => {
 			});
 
 		return res.status(200).json(post);
-	} catch (err) {}
+	} catch (err) {
+		res.status(500).json({ error: "The post could not be removed" });
+	}
 });
 
 module.exports = router;
