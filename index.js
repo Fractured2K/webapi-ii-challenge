@@ -10,7 +10,7 @@ const server = express();
 server.use(express.json()); // parse incoming json
 server.use(cors()); // allow cors
 
-// Catch incoming requests
+// Catch incoming requests to routes
 server.use("/api/posts/", postRoutes);
 
 server.listen(3001, () => {
