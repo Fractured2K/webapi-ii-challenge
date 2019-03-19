@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 // api endpoint for posts
-const endpoint = `http://localhost:30001/api/posts`;
+const endpoint = `http://localhost:3001/api/posts`;
 
 const usePosts = () => {
 	const [posts, setPosts] = useState([]);
@@ -14,8 +14,9 @@ const usePosts = () => {
 
 	const getAllPosts = async () => {
 		// Destructure data from of response
-		const { data } = axios.get(endpoint);
+		const { data } = await axios.get(endpoint);
 
+		// Set reponse data to posts state
 		setPosts(data);
 	};
 
@@ -24,3 +25,5 @@ const usePosts = () => {
 		getAllPosts
 	};
 };
+
+export default usePosts;

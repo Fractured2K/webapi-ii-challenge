@@ -1,9 +1,14 @@
 import React from "react";
 
-const PostList = () => {
+// Components
+import Post from "./Post";
+
+const PostList = props => {
 	return (
 		<div>
-			<h1>Post List</h1>
+			{props.posts.map(post => (
+				<Post key={post.id} {...post} />
+			))}
 		</div>
 	);
 };
