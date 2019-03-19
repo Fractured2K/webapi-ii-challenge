@@ -55,7 +55,26 @@ router.get("/:id", async (req, res) => {
 });
 
 // Update post by id
-router.put("/:id", async (req, res) => {});
+router.put("/:id", async (req, res) => {
+	try {
+		const post = req.body;
+		const id = req.params.id;
+
+		// check for empty post title or contents
+		if (!post.title || !post.contents)
+			return res.status(400).json({
+				errorMessage: "Please provide title and contents for the post."
+			});
+
+		const updatedPost = await Post.update(id, post);
+
+		// return 404 if post doesnt exist
+		if (!updatedPost)
+			return res.status(404).json({
+				message: "The post with the specified ID does not exist."
+			});
+	} catch (err) {}
+});
 
 // Delete post by id
 router.delete("/:id", async (req, res) => {
