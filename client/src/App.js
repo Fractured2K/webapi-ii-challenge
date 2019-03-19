@@ -11,7 +11,7 @@ const App = () => {
 	const { posts } = usePosts();
 
 	return (
-		<div>
+		<div className="container">
 			<PostList posts={posts} />
 		</div>
 	);
