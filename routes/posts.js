@@ -46,6 +46,7 @@ router.get("/:id", async (req, res) => {
 				message: "The post with the specified ID does not exist."
 			});
 
+		// return post
 		return res.status(200).json(post);
 	} catch (err) {
 		res.status(500).json({
@@ -54,7 +55,7 @@ router.get("/:id", async (req, res) => {
 	}
 });
 
-// Update post by id
+// Update post
 router.put("/:id", async (req, res) => {
 	try {
 		const post = req.body;
@@ -73,10 +74,17 @@ router.put("/:id", async (req, res) => {
 			return res.status(404).json({
 				message: "The post with the specified ID does not exist."
 			});
-	} catch (err) {}
+
+		// return updated post
+		return res.status(200).json(updatedPost);
+	} catch (err) {
+		res.status(500).json({
+			error: "The post information could not be modified."
+		});
+	}
 });
 
-// Delete post by id
+// Delete post
 router.delete("/:id", async (req, res) => {
 	try {
 		const id = req.params.id;
@@ -88,6 +96,7 @@ router.delete("/:id", async (req, res) => {
 				message: "The post with the specified ID does not exist."
 			});
 
+		// return deleted post id
 		return res.status(200).json(parseInt(id, 10));
 	} catch (err) {
 		res.status(500).json({ error: "The post could not be removed" });
