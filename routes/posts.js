@@ -54,4 +54,7 @@ router.get("/:id", async (req, res) => {
 	}
 });
 
+// Delete post by id
+router.delete("/:id", async (req, res) => {});
+
 module.exports = router;
