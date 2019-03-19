@@ -1,5 +1,7 @@
 const router = require("express").Router();
 
+const Post = require("../data/db");
+
 // Create post
 router.post("/", async (req, res) => {
 	try {
@@ -10,7 +12,14 @@ router.post("/", async (req, res) => {
 			return res.status(400).json({
 				errorMessage: "Please provide title and contents for the post."
 			});
-	} catch (err) {}
+
+		const newPost = await Post.insert(post);
+		res.status(201).json(newPost);
+	} catch (err) {
+		res.status(500).json({
+			error: "There was an error while saving the post to the database"
+		});
+	}
 });
 
 module.exports = router;
