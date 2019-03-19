@@ -54,6 +54,9 @@ router.get("/:id", async (req, res) => {
 	}
 });
 
+// Update post by id
+router.put("/:id", async (req, res) => {});
+
 // Delete post by id
 router.delete("/:id", async (req, res) => {
 	try {
@@ -66,7 +69,7 @@ router.delete("/:id", async (req, res) => {
 				message: "The post with the specified ID does not exist."
 			});
 
-		return res.status(200).json(post);
+		return res.status(200).json(parseInt(id, 10));
 	} catch (err) {
 		res.status(500).json({ error: "The post could not be removed" });
 	}
