@@ -47,7 +47,11 @@ router.get("/:id", async (req, res) => {
 			});
 
 		return res.status(200).json(post);
-	} catch (err) {}
+	} catch (err) {
+		res.status(500).json({
+			error: "The post information could not be retrieved."
+		});
+	}
 });
 
 module.exports = router;
