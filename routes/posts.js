@@ -22,4 +22,7 @@ router.post("/", async (req, res) => {
 	}
 });
 
+// Get posts
+router.get("/", async (req, res) => {});
+
 module.exports = router;
