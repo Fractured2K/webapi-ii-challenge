@@ -23,6 +23,11 @@ router.post("/", async (req, res) => {
 });
 
 // Get posts
-router.get("/", async (req, res) => {});
+router.get("/", async (req, res) => {
+	try {
+		const posts = await Post.find();
+		res.status(200).json(posts);
+	} catch (err) {}
+});
 
 module.exports = router;
